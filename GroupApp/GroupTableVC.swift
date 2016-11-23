@@ -12,6 +12,7 @@ import Firebase
 class GroupTableVC: UITableViewController {
     
     let rootRef = FIRDatabase.database().reference()
+    let groups = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +27,19 @@ class GroupTableVC: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
+        let groupName = groups[indexPath.row]
+        cell.textLabel?.text = groupName
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        performSegue(withIdentifier: "accountCreatedSegue", sender: nil)
         
     }
 
