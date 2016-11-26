@@ -18,16 +18,10 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
-                print("User already logged in")
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
             }
         
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func signIn(_ sender: UIButton) {
@@ -44,7 +38,7 @@ class LoginVC: UIViewController {
             }
             if let user = user {
                 UserDefaults.standard.setValue(user.uid, forKey: "uid")
-                print("Log in successful")
+                UserDefaults.standard.setValue(user.email, forKey: "email")
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
             }
         }
@@ -55,14 +49,6 @@ class LoginVC: UIViewController {
         let alertView = UIAlertController(title: "Uh-Oh", message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alertView, animated: true, completion: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loggedInSegue" {
-            //let controller = segue.destinationViewController as! ShowDetailViewController
-            //let show = sender as! TVShowDetail
-            //controller.show = show
-        }
     }
 
 }

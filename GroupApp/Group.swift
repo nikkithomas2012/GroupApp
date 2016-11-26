@@ -7,21 +7,34 @@
 //
 
 import Foundation
+import Firebase
 
 struct Group {
+    let id: String
     let name: String
-    let members: [String]
-    
+    var members: [String]
     
     init(name:String){
         self.name = name
         members = [String]()
+        id = ""
     }
     
-    func addMember(uid:String){
+    init(snapshot: FIRDataSnapshot) {
+        id = snapshot.key
+        members = [String]()
+        let snapshotValue = snapshot.value as! [String: AnyObject]
+        name = snapshotValue["name"] as! String
+        let membersDict = snapshotValue["members"] as! [String: Bool]
+        for member in membersDict {
+            members.append(member.key)
+        }
+    }
+    
+    mutating func addMember(uid:String){
         members.append(uid)
     }
-    
+
     func toAnyObject() -> Any {
         var memberObj: [String:Bool] = [:]
         for member in members {

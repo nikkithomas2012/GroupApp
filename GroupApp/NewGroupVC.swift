@@ -16,7 +16,6 @@ class NewGroupVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @IBAction func createNewGroup(_ sender: UIButton) {
@@ -25,16 +24,17 @@ class NewGroupVC: UIViewController {
         }
         
         //Add new group and add users membership
-        let uid = defaults.object(forKey:"uid") as! String
-        let pushRef = rootRef.child("groups").push()
-        let pushId = pushRef.getKey()
+        let uid =  UserDefaults.standard.object(forKey:"uid") as! String
+        let pushRef = rootRef.child("groups").childByAutoId()
+        let pushId = pushRef.key
         
-        let newGroup = Group(name: groupName)
-        newGroup.addMember(uid)
+        var newGroup = Group(name: groupName)
+        newGroup.addMember(uid: uid)
         pushRef.setValue(newGroup.toAnyObject())
-        let userRef = rootRef.child(uid).child("groups")
-        userRef.setValue([pushId:true])
+        let userRef = rootRef.child("users").child(uid).child("groups")
+        userRef.updateChildValues([pushId:true])
         
+        self.navigationController?.popViewController(animated: true)
     }
 
 

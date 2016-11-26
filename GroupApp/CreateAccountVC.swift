@@ -20,14 +20,8 @@ class CreateAccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     @IBAction func createAccount(_ sender: UIButton) {
         guard let email = emailTextField.text, let password = passwordTextField.text, let reenter = reenterPassTextField.text, let name = nameTextField.text else {
             return
@@ -51,7 +45,7 @@ class CreateAccountVC: UIViewController {
                 }
                 if let user = user {
                     UserDefaults.standard.setValue(user.uid, forKey: "uid")
-                    print("Log in successful")
+                    UserDefaults.standard.setValue(user.email, forKey: "email")
                     self.addUserToDB(user: user, name: name)
                 }
             }

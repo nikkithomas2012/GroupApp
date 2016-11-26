@@ -40,6 +40,7 @@
 		54246CC11DDEC808007E88AE /* UsersTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersTableVC.swift; sourceTree = "<group>"; };
 		54246CC31DDEC81F007E88AE /* NewGroupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupVC.swift; sourceTree = "<group>"; };
 		54246CC51DDEE0F8007E88AE /* MyGroupsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupsVC.swift; sourceTree = "<group>"; };
+		549F0A761DE93BE6007FAC09 /* GroupApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GroupApp.entitlements; sourceTree = "<group>"; };
 		96F989E5099228E4B712B6DA /* Pods-GroupApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GroupApp/Pods-GroupApp.release.xcconfig"; sourceTree = "<group>"; };
 		C3FA662F3FF38844A72CD316 /* Pods-GroupApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GroupApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GroupApp/Pods-GroupApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +124,7 @@
 		541CEA791DDE6CBC00035430 /* GroupApp */ = {
 			isa = PBXGroup;
 			children = (
+				549F0A761DE93BE6007FAC09 /* GroupApp.entitlements */,
 				541A6A211DE5120D0023490D /* Model */,
 				541A6A1F1DE511930023490D /* Views */,
 				54246CBE1DDEC7B5007E88AE /* Controllers */,
@@ -181,6 +183,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 429EP3Y6KS;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -401,6 +408,7 @@
 			baseConfigurationReference = C3FA662F3FF38844A72CD316 /* Pods-GroupApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GroupApp/GroupApp.entitlements;
 				DEVELOPMENT_TEAM = 429EP3Y6KS;
 				INFOPLIST_FILE = GroupApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -415,6 +423,7 @@
 			baseConfigurationReference = 96F989E5099228E4B712B6DA /* Pods-GroupApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GroupApp/GroupApp.entitlements;
 				DEVELOPMENT_TEAM = 429EP3Y6KS;
 				INFOPLIST_FILE = GroupApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
