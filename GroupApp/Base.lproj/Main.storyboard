@@ -13,7 +13,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginVC" customModule="GroupApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="GroupApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -115,12 +115,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Groups? Make one!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pAH-bY-oSb">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="groupCell" id="13N-Jj-o9J">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="13N-Jj-o9J" id="Pz5-xV-Ek9">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -138,6 +145,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noGroupsLabel" destination="pAH-bY-oSb" id="cWM-Q1-uVO"/>
                         <segue destination="uuY-lt-hK7" kind="show" identifier="viewUsersSegue" id="zMv-iA-dAa"/>
                     </connections>
                 </tableViewController>
@@ -148,17 +156,24 @@
         <!--Users TableVC-->
         <scene sceneID="EsA-f6-MLK">
             <objects>
-                <tableViewController id="uuY-lt-hK7" customClass="UsersTableVC" customModule="GroupApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="usersTable" id="uuY-lt-hK7" customClass="UsersTableVC" customModule="GroupApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gZm-Mh-RFH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be the first member of this group!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="oXO-FM-095">
+                            <rect key="frame" x="0.0" y="136" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="Fjo-72-3nq">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fjo-72-3nq" id="59m-TQ-Z1Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -170,6 +185,9 @@
                     </tableView>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="noMembersLabel" destination="oXO-FM-095" id="SPt-dR-R3W"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VY4-Sj-jAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -213,6 +231,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createNewGroup:" destination="yJB-OI-oVv" eventType="touchUpInside" id="MJm-Aj-wuZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73333333329999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -227,6 +248,9 @@
                             <constraint firstItem="BIb-L1-BLD" firstAttribute="top" secondItem="GF8-e5-dw5" secondAttribute="bottom" constant="20" id="gSO-BH-ZY2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="grpNameTextField" destination="GF8-e5-dw5" id="MGX-xh-3SW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X2E-De-Ezj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -245,22 +269,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-KJ-cql">
-                                <rect key="frame" x="16" y="95" width="288" height="110"/>
+                                <rect key="frame" x="16" y="95" width="288" height="150"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-gC-eHK">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rEX-EN-m1z">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKv-Eo-eKq">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJL-gC-eHK">
                                         <rect key="frame" x="0.0" y="40" width="288" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKv-Eo-eKq">
+                                        <rect key="frame" x="0.0" y="80" width="288" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Re-enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EoK-E1-zXs">
-                                        <rect key="frame" x="0.0" y="80" width="288" height="30"/>
+                                        <rect key="frame" x="0.0" y="120" width="288" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -279,7 +309,7 @@
                                 <size key="shadowOffset" width="3" height="-2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMn-Gi-GbR">
-                                <rect key="frame" x="111" y="225" width="98" height="42"/>
+                                <rect key="frame" x="111" y="265" width="98" height="42"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="wXx-3S-nrJ"/>
@@ -310,6 +340,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="pJL-gC-eHK" id="lJR-GR-thy"/>
+                        <outlet property="nameTextField" destination="rEX-EN-m1z" id="Mjc-DW-2Ch"/>
                         <outlet property="passwordTextField" destination="nKv-Eo-eKq" id="n45-MU-fTI"/>
                         <outlet property="reenterPassTextField" destination="EoK-E1-zXs" id="ddg-jj-9oR"/>
                         <segue destination="63l-rx-GCy" kind="show" identifier="accountCreatedSegue" id="Iwb-Bu-Ihe"/>
@@ -319,10 +350,10 @@
             </objects>
             <point key="canvasLocation" x="973.125" y="691.25"/>
         </scene>
-        <!--View Controller-->
+        <!--My GroupsVC-->
         <scene sceneID="bTz-Kr-ehJ">
             <objects>
-                <viewController id="yGR-cl-XU6" sceneMemberID="viewController">
+                <viewController id="yGR-cl-XU6" customClass="MyGroupsVC" customModule="GroupApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KiJ-qr-a9x"/>
                         <viewControllerLayoutGuide type="bottom" id="vjT-Aj-GH9"/>
@@ -332,8 +363,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dak-4F-qha">
-                                <rect key="frame" x="18" y="120" width="284" height="303"/>
+                                <rect key="frame" x="18" y="120" width="284" height="254"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't be loner. Join groups!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" id="MOy-uC-8kf">
+                                    <rect key="frame" x="0.0" y="136" width="284" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myGroupCell" id="jfh-bs-Gxf">
                                         <rect key="frame" x="0.0" y="28" width="284" height="44"/>
@@ -345,7 +383,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-d9-oLK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-d9-oLK">
                                 <rect key="frame" x="16" y="66" width="288" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -353,22 +391,40 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="3" height="-2"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knc-I0-ozB">
+                                <rect key="frame" x="76" y="382" width="168" height="41"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <size key="titleShadowOffset" width="2" height="-1"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewGroup:" destination="yJB-OI-oVv" eventType="touchUpInside" id="ATU-sb-QbW"/>
+                                    <action selector="logOut:" destination="yGR-cl-XU6" eventType="touchUpInside" id="Srn-1x-g3K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.73333333329999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="vjT-Aj-GH9" firstAttribute="top" secondItem="Dak-4F-qha" secondAttribute="bottom" constant="8" id="1cV-ca-Ibh"/>
                             <constraint firstItem="Dak-4F-qha" firstAttribute="top" secondItem="S6d-d9-oLK" secondAttribute="bottom" constant="9" id="7tn-sP-Tfg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="knc-I0-ozB" secondAttribute="trailing" constant="60" id="Ael-oU-371"/>
+                            <constraint firstItem="knc-I0-ozB" firstAttribute="leading" secondItem="bgQ-yU-0yH" secondAttribute="leadingMargin" constant="60" id="FYx-1w-cIh"/>
+                            <constraint firstItem="knc-I0-ozB" firstAttribute="top" secondItem="Dak-4F-qha" secondAttribute="bottom" constant="8" id="FZN-Zf-gMd"/>
                             <constraint firstItem="S6d-d9-oLK" firstAttribute="leading" secondItem="bgQ-yU-0yH" secondAttribute="leadingMargin" id="H6p-4h-yfm"/>
                             <constraint firstItem="Dak-4F-qha" firstAttribute="leading" secondItem="bgQ-yU-0yH" secondAttribute="leadingMargin" constant="2" id="e8q-hX-QcN"/>
                             <constraint firstItem="S6d-d9-oLK" firstAttribute="trailing" secondItem="bgQ-yU-0yH" secondAttribute="trailingMargin" id="oO5-wD-thG"/>
                             <constraint firstItem="Dak-4F-qha" firstAttribute="leading" secondItem="bgQ-yU-0yH" secondAttribute="leadingMargin" constant="2" id="p81-u3-Xqo"/>
                             <constraint firstItem="S6d-d9-oLK" firstAttribute="top" secondItem="KiJ-qr-a9x" secondAttribute="bottom" constant="2" id="qNL-RG-tyE"/>
+                            <constraint firstItem="vjT-Aj-GH9" firstAttribute="top" secondItem="knc-I0-ozB" secondAttribute="bottom" constant="8" id="qh7-R9-8z3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Dak-4F-qha" secondAttribute="trailing" constant="2" id="zlh-yK-VeB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CnP-SE-zWV"/>
                     <connections>
-                        <segue destination="uuY-lt-hK7" kind="show" id="hD4-WX-Aqx"/>
+                        <outlet property="noGroupsLabel" destination="MOy-uC-8kf" id="jie-PH-Ldr"/>
+                        <outlet property="tableView" destination="Dak-4F-qha" id="O8Y-Y2-9Fe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yXs-3K-Lxc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -399,9 +455,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Xsf-c8-xrG">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="63l-rx-GCy" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabController" automaticallyAdjustsScrollViewInsets="NO" id="63l-rx-GCy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="qiF-5o-DoC">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -435,7 +492,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Iwb-Bu-Ihe"/>
-        <segue reference="hD4-WX-Aqx"/>
+        <segue reference="JQz-gl-Ead"/>
     </inferredMetricsTieBreakers>
 </document>
