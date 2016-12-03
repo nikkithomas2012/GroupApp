@@ -42,11 +42,11 @@ class MyGroupsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     let group = Group(snapshot:snapshot)
                     self.groups.append(group)
                     DispatchQueue.main.async (execute: {
+                        self.tableView.reloadData()
                         if self.groups.count == 0 {
                             self.noGroupsLabel.isHidden = false
                         } else {
                             self.noGroupsLabel.isHidden = true
-                            self.tableView.reloadData()
                         }
                     })
                 }

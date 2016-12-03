@@ -24,10 +24,16 @@ struct Group {
         id = snapshot.key
         members = [String]()
         let snapshotValue = snapshot.value as! [String: AnyObject]
-        name = snapshotValue["name"] as! String
-        let membersDict = snapshotValue["members"] as! [String: Bool]
-        for member in membersDict {
-            members.append(member.key)
+        if snapshotValue["name"] != nil {
+            name = snapshotValue["name"] as! String
+        } else {
+            name = ""
+        }
+        if snapshotValue["members"] != nil {
+            let membersDict = snapshotValue["members"] as! [String: Bool]
+            for member in membersDict {
+                members.append(member.key)
+            }
         }
     }
     
